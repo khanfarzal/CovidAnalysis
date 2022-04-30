@@ -214,7 +214,7 @@ GROUP BY location, date, new_deaths, total_deaths
 
 -- Country Statistics Daily
 
-SELECT d.continent AS Continent,
+SELECT  d.continent AS Continent,
 	d.location AS Country, 
 	d.date AS Date,
 	d.population AS Population,
@@ -261,7 +261,7 @@ WITH CountryTotal (Continent, Country, Population, TotalCases, TotalDeaths, Aver
 	HospitalBedsPerthousand, LifeExpectancy, HumanDevelopmentIndex)
 AS
 (
-	SELECT d.continent AS Continent,
+	SELECT  d.continent AS Continent,
 		d.location AS Country, 
 		MAX(d.population) AS Population,
 		MAX(d.total_cases) AS TotalCases, 
@@ -294,7 +294,7 @@ AS
 	WHERE d.continent is not null
 	GROUP BY d.continent, d.location, d.population
 )
-SELECT Continent, Country, Population, 
+SELECT  Continent, Country, Population, 
 	TotalCases, 
 	TotalCases/Population*100 AS PercentPopulationInfected,
 	TotalDeaths,
@@ -338,7 +338,7 @@ ORDER BY 1,2
 WITH ContinentTotal(Country, Date, Population, TotalCases, TotalDeaths, TotalTests, PositiveRate, TestsPerCase, TotalVaccinations, AtleastFirstDose, PartiallyVaccinated, FullyVaccinated, TotalBoosters)
 AS
 (
-	SELECT d.location AS Country, d.date AS Date, 
+	SELECT  d.location AS Country, d.date AS Date, 
 		d.population AS Population,
 		d.total_cases AS TotalCases, 
 		CAST(d.total_deaths AS bigint) AS TotalDeaths, 
@@ -355,7 +355,7 @@ AS
 	ON d.date = v.date AND d.location = v.location
 	WHERE d.location in ('Asia', 'North America', 'South America', 'Europe', 'Africa', 'Oceania')
 )
-SELECT Country, Date, Population, 
+SELECT  Country, Date, Population, 
 	TotalCases, 
 	TotalCases/Population*100 AS PercentPopulationInfected,
 	TotalDeaths,
@@ -376,7 +376,7 @@ ORDER BY 1,2
 
 -- Global Numbers Over The Period
 
-SELECT d.location, d.date, d.population AS Population,
+SELECT  d.location, d.date, d.population AS Population,
 	CAST(d.total_cases AS bigint) AS TotalCases,
 	CAST(d.total_cases AS bigint)/d.population*100 AS PercentPopulationInfected,
 	CAST(d.total_deaths AS bigint) AS TotalDeaths,
@@ -388,7 +388,7 @@ SELECT d.location, d.date, d.population AS Population,
 	CAST(v.people_vaccinated AS bigint) AS AtleastFirstDose,
 	CAST(v.people_vaccinated AS bigint)/d.population AS PercentAtleastFirstDose,
 	CAST(v.people_vaccinated AS bigint)-CAST(v.people_fully_vaccinated AS bigint) AS PartiallyVaccinated,
-   (CAST(v.people_vaccinated AS bigint)-CAST(v.people_fully_vaccinated AS bigint))/d.population*100 AS PercentPartiallyVaccinated,
+   	(CAST(v.people_vaccinated AS bigint)-CAST(v.people_fully_vaccinated AS bigint))/d.population*100 AS PercentPartiallyVaccinated,
 	CAST(v.people_fully_vaccinated AS bigint) AS FullyVaccinated,
 	CAST(v.people_fully_vaccinated AS bigint)/d.population AS PercentFullyVaccinated,
 	CAST(v.total_boosters AS bigint) AS TotalBoosters,
