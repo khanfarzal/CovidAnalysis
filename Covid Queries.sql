@@ -239,7 +239,7 @@ SELECT d.continent AS Continent,
 	CAST(v.people_vaccinated AS bigint) AS AtleastFirstDose, -- Gives the total number of people with atleast first dose
 	CAST(v.people_vaccinated AS float)/d.population*100 AS PercentAtleastFirstDose, -- Calculates the percentage of population with atleast first dose
 	CAST(v.people_vaccinated AS bigint)-CAST(v.people_fully_vaccinated AS bigint) AS PartiallyVaccinated, -- Gives the total number of people partially vaccinated
-   (CAST(v.people_vaccinated AS float)-CAST(v.people_fully_vaccinated AS float))/d.population*100 AS PercentPartiallyVaccinated, -- Calculates the percentage of population partially vaccinated
+        (CAST(v.people_vaccinated AS float)-CAST(v.people_fully_vaccinated AS float))/d.population*100 AS PercentPartiallyVaccinated, -- Calculates the percentage of population partially vaccinated
 	CAST(v.people_fully_vaccinated AS bigint) AS FullyVaccinated, -- Gives the total number of people fully vaccinated
 	CAST(v.people_fully_vaccinated AS float)/d.population*100 AS PercentFullyVaccinated, -- Calculates the percentage of population fully vaccinated
 	CAST(v.total_boosters AS bigint) AS TotalBoosters, -- Gives the total number of people who took booster shots
