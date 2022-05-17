@@ -252,7 +252,7 @@ WHERE d.location not in ('Lower Middle Income', 'World', 'Low Income', 'European
 ORDER BY 1,2,3
 
 -- Country Statistics Over The Period using CTE
--- Did not comment each line because they all work almost similar as above
+-- Did not comment each line because they all work similar as above
 
 WITH CountryTotal (Continent, Country, Population, TotalCases, TotalDeaths, AverageReproductionRate, AverageICUPatients, 
 	AverageHospitalPatients, AveragePositiveRate, AverageTestsPerCase, TotalTests, TotalVaccinations, AtleastFirstDose, 
